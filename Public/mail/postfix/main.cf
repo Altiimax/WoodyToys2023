@@ -1,0 +1,48 @@
+# Define server identity
+myhostname = mail.l2-2.ephec-ti.be
+mydomain = l2-2.ephec-ti.be
+
+# Outgoing mail must use this as source address domain
+myorigin = $mydomain
+# Accepting local mail delivery for those destinations
+mydestination = $myhostname localhost.$mydomain localhost $mydomain
+
+# security settings
+smtpd_tls_cert_file = /etc/certificat/fullchain.pem
+smtpd_tls_key_file = /etc/certificat/private.pem
+smtpd_use_tls=yes
+#smtpd_tls_auth_only = yes
+
+# Définit les méthodes de cryptographie à utiliser (HIGH)
+tls_high_cipherlist = HIGH:!aNULL:!MD5:!ADH:!RC4:!DH 
+
+# SASL not working at the moment (returns verify: 1)
+# smtpd_sasl_auth_enable = yes
+# smtpd_sasl_type = dovecot
+# smtpd_sasl_path = private/auth
+# smtpd_sasl_security_options = noanonymous
+# broken_sasl_auth_clients = yes
+
+smtp_tls_security_level = may
+smtpd_tls_security_level = may
+smtpd_tls_protocols = !SSLv2, !SSLv3
+smtp_tls_note_starttls_offer = yes
+smtpd_tls_loglevel = 1
+#smtpd_tls_received_header = yes
+smtpd_banner = $myhostname ESMTP $mail_name
+
+recipient_delimiter = +
+# virtual_alias_domains = $mydomain
+# virtual_alias_maps = hash:/etc/postfix/virtual
+
+# Network from which we accept smtp connexions
+mynetworks = 165.22.67.79 127.0.0.0/8 [::1]/128
+smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+inet_interfaces = all
+
+#Log configuration
+maillog_file=/var/log/postfix.log
+
+content_filter = smtp-amavis:[127.0.0.1]:10024
+receive_override_options = no_address_mappings

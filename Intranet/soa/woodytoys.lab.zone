@@ -1,0 +1,19 @@
+$TTL 86400
+$ORIGIN woodytoys.lab.
+@           IN      SOA     ns.woodytoys.lab.     hostmaster.woodytoys.lab. (
+                            1          ; serial
+                            21600      ; refresh after 6 hours
+                            3600       ; retry after 1 hour
+                            604800     ; expire after 1 week
+                            86400 )    ; minimum TTL of 1 day
+
+; Name server for the domain
+            IN      NS      ns.woodytoys.lab.
+; Mail record
+            IN      MX      10      mail.woodytoys.lab.
+; Resource records
+ns          IN      A       192.168.1.2
+resolver    IN      A       192.168.1.3
+mail        IN      A       192.168.1.4
+erp         IN      A       192.168.1.5
+www         IN      A       192.168.1.6

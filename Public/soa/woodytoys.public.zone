@@ -1,0 +1,17 @@
+$TTL 86400
+$ORIGIN l2-2.ephec-ti.be.
+@           IN      SOA     ns.l2-2.ephec-ti.be.     hostmaster.l2-2.ephec-ti.be. (
+                            1          ; serial
+                            21600      ; refresh after 6 hours
+                            3600       ; retry after 1 hour
+                            604800     ; expire after 1 week
+                            86400 )    ; minimum TTL of 1 day
+
+; Name server for the domain
+            IN      NS      ns.l2-2.ephec-ti.be.
+; Mail record
+            IN      MX      10      mail.l2-2.ephec-ti.be.
+; Resource records
+ns          IN      A       165.22.67.79
+mail        IN      A       165.22.67.79
+www         IN      A       165.22.67.79

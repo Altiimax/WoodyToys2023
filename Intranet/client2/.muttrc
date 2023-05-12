@@ -1,0 +1,36 @@
+# #configuration de base
+# # set realname = "tutu"
+# # set header_cache =~/.mutt/cache/headers
+# # set certificate_file =~/.mutt/certificates
+# # set message_cachedir =~/.mutt/cache/bodies
+# set ssl_force_tls = no
+# set ssl_starttls  = no
+
+# #configuration imap
+# set spoolfile= /var/spool/mail/$USER
+# # set spoolfile="imap://tutu@mail.woodytoys.lab/"
+# set folder= ~/mail
+# # set folder="imap://tutu@mail/woodytoys.lab/"
+# set imap_user = "tutu@woodytoys.lab"
+# set imap_pass = "tutu"
+
+# #configuration SMTP
+# set smtp_url = "smtp://toto@mail.woodytoys.lab:25/"
+# #set smtp_pass = "toto"
+# # set from = "tutu@woodytoys.lab"
+# # set use_envelope_from=yes #Pour que postfix ou sendmail ne change pas votre from
+
+set realname="tutu"
+# smtp settings
+set from="tutu@woodytoys.lab"
+set ssl_starttls=no
+set ssl_force_tls=no
+set smtp_url = "smtp://mail.woodytoys.lab:25"
+
+# Imap settings
+set spoolfile="imap://tutu@mail.woodytoys.lab/"
+set imap_user = "tutu@woodytoys.lab"
+set imap_pass = "tutu"
+set folder = "imap://tutu@mail.woodytoys.lab/"
+
+set editor = "nano"
