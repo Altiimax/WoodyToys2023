@@ -1,2 +1,3 @@
 /Public/mail/fullchain.pem
 /Public/mail/private.pem
+*.pem
