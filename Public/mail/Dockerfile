@@ -16,12 +16,12 @@ COPY fullchain.pem /etc/certificat/
 # Fichiers pour postfix
 COPY postfix/main.cf /etc/postfix/
 COPY postfix/master.cf /etc/postfix/
-# COPY postfix/virtual /etc/postfix/
 
-# Fichiers pour dovcecot
+# Fichiers pour dovecot
 COPY dovecot/dovecot.conf /etc/dovecot/
 COPY dovecot/10-ssl.conf /etc/dovecot/conf.d/
 COPY dovecot/10-master.conf /etc/dovecot/conf.d/
+COPY dovecot/10-auth.conf /etc/dovecot/conf.d/
 
 # fichiers antivirus
 COPY amavis/15-content_filter_mode /etc/amavis/conf.d/

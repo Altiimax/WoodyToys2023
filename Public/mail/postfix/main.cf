@@ -17,10 +17,11 @@ smtpd_use_tls=yes
 tls_high_cipherlist = HIGH:!aNULL:!MD5:!ADH:!RC4:!DH 
 
 # SASL not working at the moment (returns verify: 1)
-# smtpd_sasl_auth_enable = yes
-# smtpd_sasl_type = dovecot
-# smtpd_sasl_path = private/auth
-# smtpd_sasl_security_options = noanonymous
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain=$myhostname
 # broken_sasl_auth_clients = yes
 
 smtp_tls_security_level = may
