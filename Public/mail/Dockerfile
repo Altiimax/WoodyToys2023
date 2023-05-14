@@ -8,6 +8,7 @@ RUN apt install postfix -y
 RUN apt install amavisd-new -y
 RUN apt install spamassassin -y
 RUN apt install clamav -y
+RUN apt install fail2ban -y
 
 # Fichiers de configuration
 COPY private.pem /etc/certificat/
@@ -26,6 +27,10 @@ COPY dovecot/10-auth.conf /etc/dovecot/conf.d/
 # fichiers antivirus
 COPY amavis/15-content_filter_mode /etc/amavis/conf.d/
 COPY amavis/05-node_id /etc/amavis/conf.d/
+
+# fail2ban services postfix et dovecot
+COPY /fail2ban/jail.local /etc/fail2ban/
+COPY /fail2ban/custom.conf /etc/fail2ban/jail.d/
 
 # Utilisateurs et mots de passe
 RUN adduser tutu
@@ -57,4 +62,5 @@ CMD service postfix start && \
     service dovecot start && \
     service amavis restart && \
     service spamassassin restart && \
+    service fail2ban start && \
     tail -f /dev/null

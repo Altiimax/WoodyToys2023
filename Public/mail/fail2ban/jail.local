@@ -1,0 +1,30 @@
+[sshd]
+# To use more aggressive sshd modes set filter parameter "mode" in jail.local:
+# normal (default), ddos, extra or aggressive (combines all).
+# See "tests/files/logs/sshd" or "filter.d/sshd.conf" for usage example and details.
+#mode   = normal
+enabled = false
+port    = ssh
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+
+[dovecot]
+enabled = true
+port = pop3,pop3s,imap,imaps
+filter = dovecot
+logpath = /var/log/dovecot.log
+maxretry  = 5
+
+[postfix]
+enabled  = true
+port     = smtp,ssmtp
+filter   = postfix
+logpath  = /var/log/postfix.log
+maxretry  = 5
+
+[sasl]
+enabled   = false
+port      = smtp,ssmtp,imap2,imap3,imaps,pop3,pop3s
+filter    = sasl
+logpath   = /var/log/dovecot.log
+maxretry  = 5
