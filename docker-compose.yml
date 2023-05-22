@@ -86,36 +86,13 @@ services:
     build:
       context: ./Public/mail
       dockerfile: Dockerfile
-    deploy:
-      resources:
-        reservations:
-          memory: 512M
     ports:
-      - "165.22.67.79:465:465/tcp"
-      - "165.22.67.79:587:587/tcp"
-      - "165.22.67.79:993:993/tcp"
-      - "165.22.67.79:995:995/tcp"
+      - 25:25/tcp
+      - 465:465/tcp
+      - 587:587/tcp
+      - 993:993/tcp
+      - 995:995/tcp
     container_name: external_mail
-
-  # external_client:
-  #   dns: 8.8.8.8
-  #   build: 
-  #     context: ./Public/client
-  #     dockerfile: Dockerfile
-  #   networks:
-  #     public:
-  #       ipv4_address: 192.168.2.2
-  #   container_name: external_client
-
-  # external_client2:
-  #   dns: 8.8.8.8
-  #   build: 
-  #     context: ./Public/client2
-  #     dockerfile: Dockerfile
-  #   networks:
-  #     public:
-  #       ipv4_address: 192.168.2.3
-  #   container_name: external_client2
 
 networks:
   intranet:
@@ -125,10 +102,3 @@ networks:
       config:
         - subnet: 192.168.1.0/24
           gateway: 192.168.1.1
-
-  # public:
-  #   name: public
-  #   ipam:
-  #     driver: default
-  #     config:
-  #       - subnet: 192.168.2.0/24
