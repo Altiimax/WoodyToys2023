@@ -33,8 +33,6 @@ smtpd_tls_loglevel = 1
 smtpd_banner = $myhostname ESMTP $mail_name
 
 recipient_delimiter = +
-# virtual_alias_domains = $mydomain
-# virtual_alias_maps = hash:/etc/postfix/virtual
 
 # Network from which we accept smtp connexions
 mynetworks = 165.22.67.79 127.0.0.0/8 [::1]/128

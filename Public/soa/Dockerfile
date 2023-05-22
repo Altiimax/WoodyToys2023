@@ -9,8 +9,9 @@ RUN mkdir /var/log/named
 
 # Copie les fichiers de configuration
 COPY named.conf /etc/bind/named.conf
-COPY woodytoys.public.zone /etc/bind/woodytoys.public.zone
-COPY woodytoys.public_reverse.zone /etc/bind/woodytoys.public_reverse.zone
+COPY woodytoys.forward.zone /etc/bind/
+COPY woodytoys.reverse.zone /etc/bind/
+
 
 # Ouverture des ports
 EXPOSE 53/tcp

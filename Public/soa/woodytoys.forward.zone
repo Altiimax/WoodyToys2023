@@ -1,0 +1,29 @@
+$TTL 86400
+$ORIGIN l2-2.ephec-ti.be.
+@           IN      SOA     ns.l2-2.ephec-ti.be.     hostmaster.l2-2.ephec-ti.be. (
+                            2023052001          ; serial
+                            21600      ; refresh after 6 hours
+                            3600       ; retry after 1 hour
+                            1209600    ; expire after 1 week
+                            86400 )    ; minimum TTL of 1 day
+
+; Name server for the domain
+            IN      NS      ns.l2-2.ephec-ti.be.
+; Mail record
+            IN      MX  10  mail.l2-2.ephec-ti.be.
+; Resource records
+ns          IN      A       165.22.67.79
+mail        IN      A       165.22.67.79
+www         IN      A       165.22.67.79
+
+@           IN      TXT     "v=spf1 ip4:165.22.67.79 ~all"
+; 2023._domainkey IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; "
+;           "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApcsP5rEj7HqeGxyyvaaM8M1kesd2rtt4Pc1BVAuUwBJDNeVlGNtkHssXQPPCqGt4D3GqLSCh7gqjvqsWTRTz9DnBqSCLjJIfXd6wirMzsqFxUdskJ/AyyhdzxmRwud7Ou/XOKwKBjk6EdiJPv16coJ9+iYKpzd6H8VoLnllvrdzfIYh+7DyXGGY5WXfDSLpfccA0MVd6XpG6Hs"
+;           "y8p1gQQNb1u/7TW7K4L1kZ92xY+WcOIG/sJgCZAQFK6RrZ+eI0yHMxoGiyt14S7Tws9zQcTpt528kwk3ONrYTJ/i3FtVYjJyBQMqmR57QA36GtX8t6ekWeAKJwwkyyC3QLWnDGfwIDAQAB" )  ; ----- DKIM key 2023 for l2-2.ephec-ti.be
+
+mail._domainkey.l2-2.ephec-ti.be.   3600   IN      TXT (
+  "v=DKIM1; h=sha256; k=rsa; p="
+  "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqa1M+LDvsM5QEm4l93i5rLsDQd1VZCbt3a4HBkBhFlk8nD7pcqEBuid+zPDl/9GXv3XEllYRgfO1OftWx7nmP5WkTyWl94oUhs/mDJy9bgoSShFaTQcNKltHad5JQ5J5AJ1OGFejyV83TfaJwQ4S"
+  "8awBK6S0Hq/8v9lw2wTJlJJtcbKfRt3d55y6RbWpKthiNT/luqvjPX+WDgQrosGmZ6DFOK45u0uUK2/lltLWWPeh/aIPRnxLYF2gwSwzwg+8d0lViKhJ7HdVv4bkctr4MlA1aKqf8dSo7IXMelvVhYh/T1697PxLx1AYYO4IGpWmVew0Iu1O38Nmdr4c1BieNQIDAQAB")
+
+_dmarc      IN      TXT     "v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r;"

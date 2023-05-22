@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
-RUN apt update
-RUN apt-get -y install systemd
+RUN apt-get update
+RUN apt-get install systemd -y
 RUN apt install -y apache2
 RUN apt install -y apache2-utils
 RUN apt install -y nano

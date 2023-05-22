@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 
 # Paquets nécessaires
-RUN apt-get update -y && apt-get install
+RUN apt-get update -y && apt-get install -y
 RUN apt install dovecot-imapd dovecot-pop3d -y
 RUN apt install postfix -y
 RUN apt install amavisd-new -y
@@ -10,7 +10,7 @@ RUN apt install spamassassin -y
 RUN apt install clamav -y
 RUN apt install fail2ban -y
 
-# Fichiers de configuration
+# Certificats LetsEncrypt pour le ssl
 COPY private.pem /etc/certificat/
 COPY fullchain.pem /etc/certificat/
 
@@ -24,11 +24,15 @@ COPY dovecot/10-ssl.conf /etc/dovecot/conf.d/
 COPY dovecot/10-master.conf /etc/dovecot/conf.d/
 COPY dovecot/10-auth.conf /etc/dovecot/conf.d/
 
-# fichiers antivirus
+# fichiers antivirus, antispam et DKIM signature
 COPY amavis/15-content_filter_mode /etc/amavis/conf.d/
 COPY amavis/05-node_id /etc/amavis/conf.d/
+COPY amavis/50-user /etc/amavis/conf.d/
+RUN mkdir /var/lib/amavis/dkim
+COPY /amavis/dkimkey.pem /var/lib/amavis/dkim/
+RUN chown amavis:amavis /var/lib/amavis/dkim -R
 
-# fail2ban services postfix et dovecot
+# fail2ban pour postfix et dovecot
 COPY /fail2ban/jail.local /etc/fail2ban/
 COPY /fail2ban/custom.conf /etc/fail2ban/jail.d/
 
@@ -40,12 +44,11 @@ RUN adduser toto
 RUN mkhomedir_helper toto
 RUN echo "toto:toto" | chpasswd
 
+# Ajout d'utilisateurs dans les groupes amavis et clamav pour les droits
 RUN adduser clamav amavis 
 RUN adduser amavis clamav
 
-# RUN postmap /etc/postfix/virtual
-
-# Spamassassin et activation
+# Activation de Spamassassin
 RUN update-rc.d spamassassin enable
 
 # Téléchargement de la base de données pour antivirus
@@ -56,6 +59,7 @@ EXPOSE 993/tcp
 EXPOSE 995/tcp
 EXPOSE 465/tcp
 EXPOSE 587/tcp
+EXPOSE 25/tcp
 
 # Lancement des services
 CMD service postfix start && \
