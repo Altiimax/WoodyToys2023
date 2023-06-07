@@ -15,11 +15,9 @@ $ORIGIN l2-2.ephec-ti.be.
 ns          IN      A       165.22.67.79
 mail        IN      A       165.22.67.79
 www         IN      A       165.22.67.79
+b2b         IN      A       165.22.67.79
 
 @           IN      TXT     "v=spf1 ip4:165.22.67.79 ~all"
-; 2023._domainkey IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; "
-;           "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApcsP5rEj7HqeGxyyvaaM8M1kesd2rtt4Pc1BVAuUwBJDNeVlGNtkHssXQPPCqGt4D3GqLSCh7gqjvqsWTRTz9DnBqSCLjJIfXd6wirMzsqFxUdskJ/AyyhdzxmRwud7Ou/XOKwKBjk6EdiJPv16coJ9+iYKpzd6H8VoLnllvrdzfIYh+7DyXGGY5WXfDSLpfccA0MVd6XpG6Hs"
-;           "y8p1gQQNb1u/7TW7K4L1kZ92xY+WcOIG/sJgCZAQFK6RrZ+eI0yHMxoGiyt14S7Tws9zQcTpt528kwk3ONrYTJ/i3FtVYjJyBQMqmR57QA36GtX8t6ekWeAKJwwkyyC3QLWnDGfwIDAQAB" )  ; ----- DKIM key 2023 for l2-2.ephec-ti.be
 
 mail._domainkey.l2-2.ephec-ti.be.   3600   IN      TXT (
   "v=DKIM1; h=sha256; k=rsa; p="

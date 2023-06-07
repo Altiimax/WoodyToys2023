@@ -16,7 +16,6 @@ smtpd_use_tls=yes
 # Définit les méthodes de cryptographie à utiliser (HIGH)
 tls_high_cipherlist = HIGH:!aNULL:!MD5:!ADH:!RC4:!DH 
 
-# SASL not working at the moment (returns verify: 1)
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
@@ -43,5 +42,6 @@ inet_interfaces = all
 #Log configuration
 maillog_file=/var/log/postfix.log
 
+#Amavis check (antivirus/spam/DKIM)
 content_filter = smtp-amavis:[127.0.0.1]:10024
 receive_override_options = no_address_mappings

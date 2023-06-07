@@ -1,14 +1,20 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
-RUN apt-get update
-RUN apt-get install systemd -y
-RUN apt install -y apache2
-RUN apt install -y apache2-utils
-RUN apt install -y nano
-RUN apt clean
+ARG DEBIAN_FRONTEND=noninteractive
 
-COPY ./html/index.html /var/www/html
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install net-tools iproute2 iputils-ping dnsutils curl nano -y
 
-EXPOSE 80
+RUN apt-get install apache2 php php-cli php-mysql libapache2-mod-php -y
 
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+COPY ./index.html /var/www/html/www/
+COPY ./b2b.php /var/www/html/b2b/
+COPY ./www-l2-2-ephec-ti-be.conf /etc/apache2/sites-available/
+COPY ./b2b-l2-2-ephec-ti-be.conf /etc/apache2/sites-available/
+
+COPY ./apache2.conf /etc/apache2/
+
+RUN a2enmod ssl
+RUN a2ensite www-l2-2-ephec-ti-be.conf && a2ensite b2b-l2-2-ephec-ti-be.conf
+
+CMD [ "apache2ctl", "-D", "FOREGROUND" ]

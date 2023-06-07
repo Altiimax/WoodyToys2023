@@ -15,4 +15,3 @@ $ORIGIN 1.168.192.in-addr.arpa.
 3           IN      PTR     resolver.woodytoys.lab.
 4           IN      PTR     mail.woodytoys.lab.
 5           IN      PTR     erp.woodytoys.lab.
-6           IN      PTR     www.woodytoys.lab.

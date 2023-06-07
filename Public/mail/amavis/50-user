@@ -22,11 +22,6 @@ dkim_key('l2-2.ephec-ti.be', 'mail', '/var/lib/amavis/dkim/dkimkey.pem');
     }
   }
 );
-# @bypass_virus_checks_maps = (
-#    \%bypass_virus_checks, \@bypass_virus_checks_acl, \$bypass_virus_checks_re);
-
-# @bypass_spam_checks_maps = (
-#    \%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);
 
 $sa_tag_level_deflt = -9999;     # note minimale pour ajouter les tags X-Spam... à l'en-tête des emails
                                  # ici, nous sommes à peu près surs que le tag sera toujours présent
@@ -39,19 +34,6 @@ $final_spam_destiny       = D_PASS;
 
 # Pour ne pas en dire trop sur les armes employées
 $X_HEADER_LINE = "spam & virus filtering at l2-2.ephec-ti.be";
-#@mynetworks = qw(127.0.0.0/8 165.22.67.79 );
-
-# $policy_bank{'ORIGINATING'} = { 
-#   originating => 1,
-#   forward_method => 'smtp:[127.0.0.1]:10025',
-#   notify_method => 'smtp:[127.0.0.1]:10025',
-#   terminate_dsn_on_notify_success => 0,
-
-#   # see: https://www.ijs.si/software/amavisd/amavisd-new-docs.html#dkim
-#   # force MTA to convert mail to 7-bit before DKIM signing
-#   # to avoid later conversions which could destroy signature:
-#   smtpd_discard_ehlo_keywords => ['8BITMIME'],
-# };
 
 #------------ Do not modify anything below this line -------------
 1;  # ensure a defined return

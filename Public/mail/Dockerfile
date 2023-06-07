@@ -44,7 +44,7 @@ RUN adduser toto
 RUN mkhomedir_helper toto
 RUN echo "toto:toto" | chpasswd
 
-# Ajout d'utilisateurs dans les groupes amavis et clamav pour les droits
+# Ajout d'utilisateurs dans les groupes amavis et clamav pour les droits de lecture/écriture
 RUN adduser clamav amavis 
 RUN adduser amavis clamav
 
