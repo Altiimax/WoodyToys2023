@@ -15,3 +15,5 @@ $ORIGIN 67.22.165.IN-ADDR.ARPA.
 79          IN      PTR     mail.l2-2.ephec-ti.be.
 79          IN      PTR     www.l2-2.ephec-ti.be.
 79          IN      PTR     b2b.l2-2.ephec-ti.be.
+$INCLUDE K67.22.165.in-addr.arpa.+008+13306.key
+$INCLUDE K67.22.165.in-addr.arpa.+008+37795.key

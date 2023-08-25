@@ -25,3 +25,5 @@ mail._domainkey.l2-2.ephec-ti.be.   3600   IN      TXT (
   "8awBK6S0Hq/8v9lw2wTJlJJtcbKfRt3d55y6RbWpKthiNT/luqvjPX+WDgQrosGmZ6DFOK45u0uUK2/lltLWWPeh/aIPRnxLYF2gwSwzwg+8d0lViKhJ7HdVv4bkctr4MlA1aKqf8dSo7IXMelvVhYh/T1697PxLx1AYYO4IGpWmVew0Iu1O38Nmdr4c1BieNQIDAQAB")
 
 _dmarc      IN      TXT     "v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r;"
+$INCLUDE Kl2-2.ephec-ti.be.+008+28669.key
+$INCLUDE Kl2-2.ephec-ti.be.+008+44805.key

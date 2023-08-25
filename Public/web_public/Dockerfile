@@ -11,6 +11,8 @@ COPY ./index.html /var/www/html/www/
 COPY ./b2b.php /var/www/html/b2b/
 COPY ./www-l2-2-ephec-ti-be.conf /etc/apache2/sites-available/
 COPY ./b2b-l2-2-ephec-ti-be.conf /etc/apache2/sites-available/
+COPY fullchain.pem /etc/apache2/
+COPY privkey.pem /etc/apache2/
 
 COPY ./apache2.conf /etc/apache2/
 

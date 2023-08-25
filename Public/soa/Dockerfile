@@ -9,8 +9,8 @@ RUN mkdir /var/log/named
 
 # Copie les fichiers de configuration
 COPY named.conf /etc/bind/named.conf
-COPY woodytoys.forward.zone /etc/bind/
-COPY woodytoys.reverse.zone /etc/bind/
+COPY woodytoys.forward.zone.signed /etc/bind/
+COPY woodytoys.reverse.zone.signed /etc/bind/
 
 
 # Ouverture des ports
